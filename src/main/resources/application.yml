@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/docregistry
+    username: docregistry
+    password: docregistry
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    com.nikitamorozov.docregistry: DEBUG
+
+workers:
+  submit:
+    enabled: true
+    batch-size: 100
+    interval-ms: 10000
+  approve:
+    enabled: true
+    batch-size: 100
+    interval-ms: 10000
+
